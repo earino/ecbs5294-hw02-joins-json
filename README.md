@@ -61,8 +61,8 @@ its ID. The notebook's cells already have IDs: `A1`–`A4` (the evidence), `B1`�
    you repair: they measure your colleague's drafts, so they stay the evidence.
 3. **Section B — the repairs, one KPI at a time.** Each repair is a query that follows the brief, written into a new
    cell; your colleague's cell stays as it was. Add the three counts of every join you write to the Joins section.
-   After each repair, compare its total with the headline, and **commit**: a commit that changes a join carries the
-   join's ID and its three counts in one line of its message.
+   After each repair, compare its total with the headline, and **commit**: a commit that changes a join names the
+   cause and cites the join's ID; the counts stay in the Joins section.
 4. **Section C — the two new KPIs**, from the brief. Their joins go in the Joins section too.
 5. **Section D — the reconciliation table**: one row per KPI, naming the identity that KPI allows, with the KPI's
    number beside a number computed independently. **Section E — the assertions**: one cell that stops, with the number
@@ -102,7 +102,7 @@ In the repo, committed:
    number; do not copy join counts here. If a sentence rests on a join, cite its ID from `DIAGNOSIS.md`. Leave
    `SUBMITTING.md` alone.
 7. **`AI_USE.md`**.
-8. **Commits** whose messages name the cause, with the join's ID and three counts in any commit that changes a join;
+8. **Commits** whose messages name the cause, citing the join's ID in any commit that changes a join;
    **`GIT_LOG.txt`**; and the archive, **`hw2-submission.zip`**, made as `SUBMITTING.md` says.
 
 Upload to the Homework 2 slot on **Moodle**: `hw2-submission.zip` and the video.
@@ -153,9 +153,9 @@ which states move by more than 0.05 under it, and whether the board's reading wo
 
 ## Git thread
 
-This session's habit: **the three counts go in the commit message of any commit that changes a join**, for example
-"KPI 1 at the month's average rate, LEFT JOIN by month (J2): 2,652 orders in, 2,652 rows out, 2,652 distinct".
-The line is written once, when you commit; it is the history's record of what the join did. Commit after each repair,
+This session's habit: **a commit that changes a join names the cause and cites the join's ID**, for example
+"KPI 1 at the month's average rate, LEFT JOIN by month (J2)". The three counts live once, in the Joins section of
+`DIAGNOSIS.md`; the ID in the message points the history's reader there. Commit after each repair,
 not once at the end.
 
 ## Grading
