@@ -67,8 +67,9 @@ its ID. The notebook's cells already have IDs: `A1`–`A4` (the evidence), `B1`�
 5. **Section D — the reconciliation table**: one row per KPI, naming the identity that KPI allows, with the KPI's
    number beside a number computed independently. **Section E — the assertions**: one cell that stops, with the number
    in its message, if any identity in D fails, if any order has no rate, or if any order is counted twice. Then make
-   one assertion fail on purpose (point it at one of your colleague's `draft_` tables, say), paste the message into
-   the matching note's part 5, and put it back.
+   **one** assertion fail on purpose (point it at one of your colleague's `draft_` tables, say), paste its message
+   into that KPI's note, part 5, and put it back. One demonstration is the whole requirement: the other notes name
+   the assertion that guards them, without a message.
 6. *Restart* and *Run All*. The notebook must run top to bottom with every assertion passing.
 7. Finish `DIAGNOSIS.md` (the rest of each note, the joins list, the trap log), `AI_USE.md`, and the **Results**
    section of this README (below). Commit.
@@ -141,8 +142,9 @@ again**: where the evidence is in the notebook or the Joins section, write its I
 
 - **Part 3, evidence:** the join IDs and the section A cell (`J3`, `A1`), with the line that shows the cause.
 - **Part 4, change:** the section B cell (`B1`), and one sentence on what the query now does.
-- **Part 5, verification:** the row of `D` by its name, the assertion in `E` that guards it, and **the message it gave
-  when you made it fail on purpose, pasted**: once you put the assertion back, the notebook no longer shows it.
+- **Part 5, verification:** the row of `D` by its name and the assertion in `E` that guards it. **In one note only**,
+  the one whose assertion you made fail on purpose, also paste **the message it gave**: once you put the assertion
+  back, the notebook no longer shows it. The other three notes need no message.
 
 ## Stretch (optional, not graded)
 

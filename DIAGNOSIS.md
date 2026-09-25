@@ -6,7 +6,7 @@ Four notes, one per drafted KPI; then the **Joins** section; then the **trap log
 (the evidence), `B1`–`B4`, `C1`, `C2` (your queries), `D` (the reconciliation table; cite a row by its name) and `E`
 (the assertions). Joins get their IDs below, in the Joins section: `J1`, `J2`, …. Where the evidence is in the
 notebook or the Joins section, write its ID and quote the one line that matters. **Paste only what the notebook no
-longer shows**: the message an assertion gave when you made it fail on purpose.
+longer shows**: the message the **one** assertion gave when you made it fail on purpose, in that KPI's note only.
 
 ---
 
@@ -21,8 +21,8 @@ longer shows**: the message an assertion gave when you made it fail on purpose.
 
 4. **Change.** The section B cell (`B1`), and one sentence on what the query now does.
 
-5. **Verification.** The row of `D` by its name, the assertion in `E` that guards it, and the message it gave when you
-   made it fail on purpose, pasted:
+5. **Verification.** The row of `D` by its name, and the assertion in `E` that guards it. If this is the one note whose
+   assertion you made fail on purpose, paste its message here; otherwise leave the box empty:
 
 ```text
 
@@ -39,8 +39,8 @@ longer shows**: the message an assertion gave when you made it fail on purpose.
 
 4. **Change.** The section B cell (`B2`), and one sentence on what the query now does.
 
-5. **Verification.** The row of `D` by its name, the assertion in `E` that guards it, and the message it gave when you
-   made it fail on purpose, pasted:
+5. **Verification.** The row of `D` by its name, and the assertion in `E` that guards it. If this is the one note whose
+   assertion you made fail on purpose, paste its message here; otherwise leave the box empty:
 
 ```text
 
@@ -57,8 +57,8 @@ longer shows**: the message an assertion gave when you made it fail on purpose.
 
 4. **Change.** The section B cell (`B3`), and one sentence on what the query now does.
 
-5. **Verification.** The row of `D` by its name, the assertion in `E` that guards it, and the message it gave when you
-   made it fail on purpose, pasted:
+5. **Verification.** The row of `D` by its name, and the assertion in `E` that guards it. If this is the one note whose
+   assertion you made fail on purpose, paste its message here; otherwise leave the box empty:
 
 ```text
 
@@ -75,8 +75,8 @@ longer shows**: the message an assertion gave when you made it fail on purpose.
 
 4. **Change.** The section B cell (`B4`), and one sentence on what the query now does.
 
-5. **Verification.** The row of `D` by its name, the assertion in `E` that guards it, and the message it gave when you
-   made it fail on purpose, pasted:
+5. **Verification.** The row of `D` by its name, and the assertion in `E` that guards it. If this is the one note whose
+   assertion you made fail on purpose, paste its message here; otherwise leave the box empty:
 
 ```text
 
