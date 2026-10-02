@@ -1,6 +1,6 @@
 # Homework 2 — Many tables and an API: the board-deck numbers
 
-**ECBS5294 — Working with Data · due the Friday after Session 2 (16 October 2026), 23:59, on Moodle**
+**ECBS5294 — Working with Data · due the Saturday after Session 2 (17 October 2026), 23:59, on Moodle**
 
 Budget about **6–7 hours**. If you are well past that and still stuck, post on the Moodle forum. That tells us
 something useful about the assignment, and it is not a mark against you.
