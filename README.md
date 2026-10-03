@@ -12,7 +12,7 @@ something useful about the assignment, and it is not a mark against you.
 | **The question** | What are the six numbers the board asked for, and can each one be trusted? |
 | **The files** | Olist's orders, items, payments, reviews, customers, sellers, products and category names in `data/raw/`, and the ECB rates in `data/raw/api/frankfurter_eur.json`. What each KPI means: **`BRIEF.md`**. |
 | **What is wrong** | Four KPIs are drafted and run without an error; their totals disagree with the headline numbers. Two KPIs are not started. |
-| **What you hand in** | `hw2-submission.zip` and a 60–90 second video, on Moodle. `SUBMITTING.md` says how. |
+| **What you hand in** | `hw2-submission.zip`, on Moodle. `SUBMITTING.md` says how. |
 | **First thing to do** | Read `BRIEF.md`. Then run the notebook and put each KPI's total beside the headline. |
 
 ## Get the project
@@ -49,31 +49,36 @@ monthly euro query for the first time. The brief's conversion rule is the same.)
 
 The list under *What you must submit* is what you hand in. This is the order to do it in.
 
-**Open `DIAGNOSIS.md` before step 2.** Each piece of evidence is written down **once**, and cited everywhere else by
-its ID. The notebook's cells already have IDs: `A1`–`A4` (the evidence), `B1`–`B4`, `C1`, `C2` (your queries), `D`
-(the reconciliation table, one named row per KPI) and `E` (the assertions). Joins get IDs in `DIAGNOSIS.md`: `J1`, `J2`, ….
+Each piece of evidence is written down **once**, and cited everywhere else by its ID. The notebook's cells have
+IDs: `A1`–`A4` (the evidence), `B1`–`B4`, `C1`, `C2` (your queries), `J` (the joins: the three counts, written once,
+each with an ID `J1`, `J2`, …), `D` (the reconciliation table, one named row per KPI), `E` (the assertions) and `F`
+(the one assertion you made fail).
 
-1. Read `BRIEF.md`. Run the notebook top to bottom. Write the four disagreements above into the four notes' part 1.
+**Every KPI you repair or build has five parts**, in the markdown cell under its heading (the notebook explains them
+once, at the top): the sentence, in plain English — what the number measures, which rows it comes from, which rows
+the query left out; the rows you expect, with their source ("the brief fixes it", a section A cell, or "neither fixes
+this"); the query and the number; the check, in the kind the heading names (a sum, a ratio, a ranked list, or a join
+with its three counts in `J`); and one line, **how would I know if this were wrong?** Write that line **before you
+fix the draft**, while the wrong number is still on screen: it is the evidence, and the repair erases the number.
+
+1. Read `BRIEF.md`. Run the notebook top to bottom. Put each drafted KPI's total beside the headline.
 2. **Section A — the evidence, before any repair.** For each drafted KPI: the three counts for every join it makes,
    and the key test (`COUNT(*)` against `COUNT(DISTINCT …)`) on any table whose grain you are not sure of. Write each
-   join's three counts once, in the **Joins** section of `DIAGNOSIS.md`, with an ID. Part 3 of that KPI's note cites
-   the join's ID and the cell, and quotes the one line that shows the cause. Leave section A's cells as they are after
-   you repair: they measure your colleague's drafts, so they stay the evidence.
-3. **Section B — the repairs, one KPI at a time.** Each repair is a query that follows the brief, written into a new
-   cell; your colleague's cell stays as it was. Add the three counts of every join you write to the Joins section.
-   After each repair, compare its total with the headline, and **commit**: a commit that changes a join names the
-   cause and cites the join's ID; the counts stay in the Joins section.
-4. **Section C — the two new KPIs**, from the brief. Their joins go in the Joins section too.
+   join's three counts once, in section `J`, with an ID. Leave section A's cells as they are after you repair: they
+   measure your colleague's drafts, so they stay the evidence.
+3. **Section B — the repairs, one KPI at a time.** Write the five parts first, the how-would-I-know line from what
+   section A showed you; then the repair, a query that follows the brief, in the cell under it; your colleague's cell
+   stays as it was. Add the three counts of every join you write to `J`. After each repair, compare its total with
+   the headline, and **commit**: a commit that changes a join names the cause and cites the join's ID.
+4. **Section C — the two new KPIs**, from the brief, the same five parts. Their joins go in `J` too.
 5. **Section D — the reconciliation table**: one row per KPI, naming the identity that KPI allows, with the KPI's
    number beside a number computed independently. **Section E — the assertions**: one cell that stops, with the number
    in its message, if any identity in D fails, if any order has no rate, or if any order is counted twice. Then make
    **one** assertion fail on purpose (point it at one of your colleague's `draft_` tables, say), paste its message
-   into that KPI's note, part 5, and put it back. One demonstration is the whole requirement: the other notes name
-   the assertion that guards them, without a message.
+   under `F`, and put the assertion back. One demonstration is the whole requirement.
 6. *Restart* and *Run All*. The notebook must run top to bottom with every assertion passing.
-7. Finish `DIAGNOSIS.md` (the rest of each note, the joins list, the trap log), `AI_USE.md`, and the **Results**
-   section of this README (below). Commit.
-8. Follow `SUBMITTING.md`: commit everything, save the Git log, make the zip. Record the video. Upload both.
+7. Finish the five parts of every KPI, `AI_USE.md`, and the **Results** section of this README (below). Commit.
+8. Follow `SUBMITTING.md`: commit everything, save the Git log, make the zip. Upload it.
 
 ## What you must submit
 
@@ -90,30 +95,20 @@ In the repo, committed:
    order counted twice*. **Money is compared to the cent, never with `==`:** write `abs(a - b) < 0.005`, or round
    both to two decimals first. Two correct ways of adding up the same money can differ in the last digit of a float,
    so `==` can fail on right numbers. Whole-number counts may use `==`; averages agree to six decimals.
-5. **`DIAGNOSIS.md`**: one five-part note per failure you repaired (the template has four); a **Joins** section, the one
-   place the three counts are written: every join in your submission, one line each, with an ID (`J1`, `J2`, …); and a
-   **Trap log**: one line per data issue that changed a number, even where your own query was never wrong (for
-   example: one order has no payment row, so there are 2,652 paid orders, not 2,653). The notes cite joins and cells
-   by ID instead of pasting them again (see *Diagnosis note*, below).
+5. **The five parts under every repaired and new KPI** (B1–B4, C1, C2), and **section `J`**, the one place the
+   three counts are written: every join in your submission, one line each, with an ID (`J1`, `J2`, …). The checks
+   and the how-would-I-know lines cite joins and cells by ID instead of pasting them again.
 6. **`README.md`**: replace the *Start here* and *What is broken* sections with a **Results** section for the board:
    the six KPIs' headline figures, and three to five sentences a board member can read — what the numbers show, what
    was excluded and why, and **one thing this data cannot answer**, said as a fact about the data ("Olist has no cost
    data, so these figures say nothing about margin"), not as a hedge. Give each exclusion once, in words and one
-   number; do not copy join counts here. If a sentence rests on a join, cite its ID from `DIAGNOSIS.md`. Leave
+   number; do not copy join counts here. If a sentence rests on a join, cite its ID from section `J`. Leave
    `SUBMITTING.md` alone.
 7. **`AI_USE.md`**.
 8. **Commits** whose messages name the cause, citing the join's ID in any commit that changes a join;
    **`GIT_LOG.txt`**; and the archive, **`hw2-submission.zip`**, made as `SUBMITTING.md` says.
 
-Upload to the Homework 2 slot on **Moodle**: `hw2-submission.zip` and the video.
-
-## The video
-
-**60–90 seconds.** Start by saying "Homework 2" and the repo name. Show the notebook after *Restart* and *Run All*,
-with the assertions cell passing. Then take **one** failure of your choice and explain it in full: the symptom, the
-cause (with the evidence that showed it — why the number was wrong, not only where), what you changed, and how you
-verified it. It is scored on those four elements, for that one failure; the other three are in your notes, not the
-video. Your voice is required.
+Upload to the Homework 2 slot on **Moodle**: `hw2-submission.zip`.
 
 ## Rules
 
@@ -121,8 +116,8 @@ video. Your voice is required.
 - The brief is the definition. A number that matches the headline by a route the brief does not describe is not the
   fix.
 - Every fix is a query: a rewritten query with its evidence and its check, not a changed keyword.
-- AI may explain and suggest; you must be able to explain every line, on video, without notes. Say what you used it
-  for in `AI_USE.md`.
+- AI may explain and suggest; you must be able to explain every line, in your own words, without notes. Say what you
+  used it for in `AI_USE.md`.
 
 ## Hints, if stuck
 
@@ -135,16 +130,19 @@ video. Your voice is required.
    than the thing you are counting: an item is not an order, and a review can cover two orders. The brief says what
    each average is over.
 
-## Diagnosis note
+## The five parts, and what each one cites
 
-`DIAGNOSIS.md` has four notes ready, one per drafted KPI, then the Joins section and the trap log. **Cite, do not paste
-again**: where the evidence is in the notebook or the Joins section, write its ID and quote the one line that matters.
+**Cite, do not paste again**: where the evidence is in the notebook or in `J`, write its ID and quote the one line
+that matters.
 
-- **Part 3, evidence:** the join IDs and the section A cell (`J3`, `A1`), with the line that shows the cause.
-- **Part 4, change:** the section B cell (`B1`), and one sentence on what the query now does.
-- **Part 5, verification:** the row of `D` by its name and the assertion in `E` that guards it. **In one note only**,
-  the one whose assertion you made fail on purpose, also paste **the message it gave**: once you put the assertion
-  back, the notebook no longer shows it. The other three notes need no message.
+- **The sentence** says it back from `BRIEF.md`, with the rows named: what is measured, which rows, which rows left out.
+- **The rows you expect** name their source: the brief, a section A cell by ID, or "neither fixes this".
+- **The check** names its kind and its place: the row of `D` by its name, and the join IDs in `J` (`J3`, `A1`).
+- **How would I know if this were wrong?** names the number that would move, which way, and the cell or row of `D`
+  that would show it — the cause as what the join did to the grain, or which rows found no match, never as what you
+  changed. Written before the repair.
+- **`F`** holds the one assertion you made fail on purpose, with its message: once you put the assertion back, the
+  notebook no longer shows it. The other KPIs name their assertion in their check line, with no message.
 
 ## Stretch (optional, not graded)
 
@@ -154,13 +152,14 @@ which states move by more than 0.05 under it, and whether the board's reading wo
 ## Git thread
 
 This session's habit: **a commit that changes a join names the cause and cites the join's ID**, for example
-"KPI 1 at the month's average rate, LEFT JOIN by month (J2)". The three counts live once, in the Joins section of
-`DIAGNOSIS.md`; the ID in the message points the history's reader there. Commit after each repair,
-not once at the end.
+"KPI 1 at the month's average rate, LEFT JOIN by month (J2)". The three counts live once, in section `J` of the
+notebook; the ID in the message points the history's reader there. Commit after each repair, not once at the end.
 
 ## Grading
 
-See the rubric on the course site: `assessments/hw2_rubric.md`.
+The rubric is on the course site. Correct fixes and the two new KPIs 30 · the checks and the how-would-I-know lines,
+with the three counts for every join 30 · the sentences and the sourced estimates, and the Results section 25 · clean
+submission and Git 10 · AI use 5. Late: one day at −10%; nothing after Sunday 23:59.
 
 ## If you got lost: how to reset
 
